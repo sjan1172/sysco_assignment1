@@ -16,9 +16,14 @@ public class AUTLandingPage extends BasePage{
     private By lnkContact = By.linkText("Contact");
     private By lnkTrackOrders = By.linkText("Track order");
 
+    private By lblGreetUser = By.xpath("//li[@class=\"greet welcome\"]");
+
+    private By lblCartItemsCount = By.xpath("//div[@class='minicart-wrapper']//span[@class='value']");
+    private By iconCart = By.className("minicart-wrapper");
+
     public static void loadPage(Capabilities capabilities, String url) {
         syscoLabUIOgm = new SyscoLabWUI(capabilities);
-        syscoLabUIOgm.navigateTo(url);
+            syscoLabUIOgm.navigateTo(url);
         syscoLabUIOgm.driver.manage().window().maximize();
     }
     
@@ -52,5 +57,21 @@ public class AUTLandingPage extends BasePage{
         syscoLabUIOgm.click(lnkTrackOrders);
     }
 
+    public String getLoggedInUserGeetingText(){
+        if(syscoLabUIOgm.isDisplayed(lblGreetUser)){
+            return syscoLabUIOgm.getText(lblGreetUser);
+        }
+        return null;
+    }
 
+    public Boolean isCartItemsCountDisplayed() {
+        if(syscoLabUIOgm.isDisplayed(lblCartItemsCount)){
+            return true;
+        }
+        return false;
+    }
+
+    public void clickCart(){
+        syscoLabUIOgm.click(iconCart);
+    }
 }

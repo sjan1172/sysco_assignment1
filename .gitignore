@@ -32,3 +32,5 @@ target/
 .settings/
 .vscode/
 test-output/
+coverage/
+.nyc_output/

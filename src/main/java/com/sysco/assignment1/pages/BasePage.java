@@ -8,4 +8,12 @@ import org.openqa.selenium.By;
  */
 public class BasePage {
     protected static SyscoLabUI syscoLabUIOgm;
+    private By btnOKModalWindow = By.xpath("//button/span[text()='OK']/..");
+
+    public void clickOKModelWindow(){
+        syscoLabUIOgm.waitTillElementLoaded(btnOKModalWindow);
+        syscoLabUIOgm.click(btnOKModalWindow);
+    }
+
+
 }
