@@ -6,6 +6,8 @@ import org.openqa.selenium.Capabilities;
 import com.syscolab.qe.core.ui.SyscoLabUI;
 import com.syscolab.qe.core.ui.web.SyscoLabWUI;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by Rifad on 5/21/18.
  */
@@ -21,10 +23,13 @@ public class AUTLandingPage extends BasePage{
     private By lblCartItemsCount = By.xpath("//div[@class='minicart-wrapper']//span[@class='value']");
     private By iconCart = By.className("minicart-wrapper");
 
+    public AUTLandingPage(){
+    }
+
     public static void loadPage(Capabilities capabilities, String url) {
         syscoLabUIOgm = new SyscoLabWUI(capabilities);
-            syscoLabUIOgm.navigateTo(url);
-        syscoLabUIOgm.driver.manage().window().maximize();
+        syscoLabUIOgm.navigateTo(url);
+        syscoLabUIOgm.driver.manage().window().fullscreen();
     }
     
     public void quitDriver() {
@@ -38,23 +43,24 @@ public class AUTLandingPage extends BasePage{
     }
 
     public void clickLogo(){
-        syscoLabUIOgm.click(imgLogo);
+        syscoLabUIOgm.click(syscoLabUIOgm.findElement(imgLogo));
     }
 
     public void clickLoginMenu(){
-        syscoLabUIOgm.click(lnkLogin);
+        syscoLabUIOgm.click(syscoLabUIOgm.findElement(lnkLogin));
+        syscoLabUIOgm.sleep(3);
     }
 
     public void clickRegisterMenu(){
-        syscoLabUIOgm.click(lnkRegister);
+        syscoLabUIOgm.click(syscoLabUIOgm.findElement(lnkRegister));
     }
 
     public void clickContactMenu(){
-        syscoLabUIOgm.click(lnkContact);
+        syscoLabUIOgm.click(syscoLabUIOgm.findElement(lnkContact));
     }
 
     public void clickTrackOrdersMenu(){
-        syscoLabUIOgm.click(lnkTrackOrders);
+        syscoLabUIOgm.click(syscoLabUIOgm.findElement(lnkTrackOrders));
     }
 
     public String getLoggedInUserGeetingText(){
@@ -72,6 +78,7 @@ public class AUTLandingPage extends BasePage{
     }
 
     public void clickCart(){
-        syscoLabUIOgm.click(iconCart);
+        syscoLabUIOgm.click(syscoLabUIOgm.findElement(iconCart));
+        syscoLabUIOgm.sleep(3);
     }
 }

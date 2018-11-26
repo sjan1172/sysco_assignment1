@@ -8,20 +8,21 @@ import org.openqa.selenium.By;
  * Created by Shiyam Jannan on 11/19/18.
  */
 public class ShoppingCartPage extends BasePage {
-    //Elements under "LOGIN TO MYFIT REWARDS" section
     private By panelShoppingCart = By.id("minicartOffcanvas");
     private By btnClose = By.xpath("//div[@class='close']");
     private By cartItem = By.xpath("//div[@data-role='product-item']");
     private By btnCloseCartItem = By.xpath("//a[@title='Remove item']");
     private By lblNoItemsInCart = By.xpath("//div[@class='minicart-items']//*[contains(@class,'subtitle')]");
 
+    public ShoppingCartPage(){
+
+    }
     public Boolean isPanelHidden() {
         return syscoLabUIOgm.getAttribute(panelShoppingCart, ElementAttributes.ARIA_HIDDEN).equals(ElementStatus.TRUE);
     }
 
     public void clickOnCloseIcon(){
-        syscoLabUIOgm.waitTillElementLoaded(btnClose);
-        syscoLabUIOgm.click(btnClose);
+        syscoLabUIOgm.click(syscoLabUIOgm.findElement(btnClose));
     }
 
     public Integer getCartItemCount(){
@@ -30,7 +31,9 @@ public class ShoppingCartPage extends BasePage {
     }
 
     public void clickCloseItem(){
-        syscoLabUIOgm.click(btnCloseCartItem);
+        syscoLabUIOgm.sleep(5);
+        syscoLabUIOgm.click(syscoLabUIOgm.findElement(btnCloseCartItem));
+        syscoLabUIOgm.sleep(3);
     }
 
     public String getNoItemsInCartText(){

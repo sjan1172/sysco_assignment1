@@ -10,7 +10,7 @@ import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class NavigateToMAccountTest extends TestBase {
+public class NavigateToMyAccountTest extends TestBase {
 
     @BeforeClass
     public void init(ITestContext iTestContext) {
@@ -35,6 +35,8 @@ public class NavigateToMAccountTest extends TestBase {
         System.out.println("=== Closed Cart ===");
 
         UserFunc.addRandomItemFromMensCategoryToCart(Categories.LIFESTYLE);
+        UserFunc.addRandomItemFromMensCategoryToCart(Categories.SCHOOL);
+
         ShoppingCartFunc.verifyCartItemExists();
         UserFunc.quiteDriver();
     }

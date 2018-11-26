@@ -10,12 +10,16 @@ import org.openqa.selenium.WebElement;
  */
 public class MenuOptions extends BasePage {
 
-    private By menuOptionMens = By.xpath("//a[@title='Mens']");
+    private By menuOptionMen = By.xpath("//a[@title='Mens']/..");
 
     public void gotoCategory(String categoryName){
         String searchPattern = "//div[contains(@class,'open')]//a[@title='%s']";
         WebElement element = syscoLabUIOgm.findElement(By.xpath(String.format(searchPattern, categoryName)));
         syscoLabUIOgm.click(element);
+    }
+
+    public MenuOptions(){
+
     }
 
     private By menuOptionWomens = By.xpath("//a[@title='Womens']");
@@ -24,7 +28,9 @@ public class MenuOptions extends BasePage {
     private By menuOptionMyFIT = By.xpath("//a[@title='MyFIT']");
 
     public void gotoMensMenu(){
-        syscoLabUIOgm.click(menuOptionMens);
+        syscoLabUIOgm.sleep(5);
+        syscoLabUIOgm.click(menuOptionMen);
+        syscoLabUIOgm.sleep(3);
     }
 
     public void gotoKidsMenu(){

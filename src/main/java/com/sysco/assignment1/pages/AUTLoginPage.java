@@ -14,6 +14,9 @@ public class AUTLoginPage extends BasePage {
     private By lnkForgotPassword = By.partialLinkText("Forgot Your Password?");
     private By btnLogin = By.id("send2");
 
+    public AUTLoginPage(){
+    }
+
     public void enterEmail(String email) {
         syscoLabUIOgm.sendKeys(txtEmail, email);
     }

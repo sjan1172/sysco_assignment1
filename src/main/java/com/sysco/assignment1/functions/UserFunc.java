@@ -1,6 +1,5 @@
 package com.sysco.assignment1.functions;
 
-import com.sysco.assignment1.common.Categories;
 import com.sysco.assignment1.pages.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -23,6 +22,7 @@ public class UserFunc  {
         if (Constants.RUN_LOCALLY) {
             DriverSetUpUtil.setToRunLocally();
             DesiredCapabilities capabilities = null;
+
             autLandingPage.loadPage(capabilities, Constants.APP_URL);
         } else {
             autLandingPage.loadPage(DriverSetUpUtil.setToRunRemotely(Constants.APP_OS), Constants.APP_URL);
@@ -74,16 +74,19 @@ public class UserFunc  {
     }
 
     public static void addRandomItemFromMensCategoryToCart(String categoryName){
+
         menuOptions.gotoMensMenu();
-        menuOptions.gotoCategory(Categories.SCHOOL);
+        menuOptions.gotoCategory(categoryName);
         itemSearchPage.waitForSearchedItemsLoaded();
-        Integer searchedItemCount = itemSearchPage.getSearchedItems().size();
-        Integer selectRandomItemNumber = (int)(Math.random() * searchedItemCount + 1);
-        itemSearchPage.selectSearchItem(itemSearchPage.getSearchedItems().get(0));
-//        itemDetailPage.waitForItemPageLoaded();
-        itemDetailPage.selectAvailableSize(itemDetailPage.getAvailableSizes().get(0)); //Selecting first
+        itemSearchPage.selectRandomizedSearchItem();
+        itemDetailPage.selectAvailableSize(); //Selecting first
         itemDetailPage.clickAddToCart();
+        itemDetailPage.pause(5000);
+
+
     }
 
-
+    public static void refreshPage() {
+        autLandingPage.pageRefresh();
+    }
 }

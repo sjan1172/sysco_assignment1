@@ -14,18 +14,30 @@ import java.util.List;
 public class ItemSearchPage extends BasePage {
 
     private By searchedItemsContainer = By.xpath("//ul[contains(@class,'product-items')]");
-    private By searchedItem = By.xpath("//ul[contains(@class,'product-items')]/li");
+    private By searchedItem = By.xpath("//ul[contains(@class,'product-items')]/li//div[contains(@class,'product-item-details')]");
 
+    public ItemSearchPage(){
+
+    }
     public void waitForSearchedItemsLoaded(){
         syscoLabUIOgm.waitTillElementLoaded(searchedItemsContainer);
     }
 
     public List<WebElement> getSearchedItems(){
-        waitForSearchedItemsLoaded();
         return syscoLabUIOgm.findElements(searchedItem);
     }
 
-    public void selectSearchItem(WebElement element){
+    public void selectFirstSearchItem(){
+        syscoLabUIOgm.sleep(5);
+        syscoLabUIOgm.moveToAndClick(searchedItem);
+    }
+
+    public void selectRandomizedSearchItem(){
+
+        syscoLabUIOgm.sleep(10);
+        System.out.println("Found Items: "  + getSearchedItems().size());
+        Integer selectRandomItemNumber = (int)(Math.random() * getSearchedItems().size() + 1);
+        WebElement element = getSearchedItems().get(selectRandomItemNumber);
         syscoLabUIOgm.click(element);
     }
 }

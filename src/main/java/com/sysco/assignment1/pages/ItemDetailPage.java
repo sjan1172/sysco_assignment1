@@ -10,24 +10,33 @@ import java.util.List;
  */
 public class ItemDetailPage extends BasePage {
 
-    private By productOptionsWrapper = By.id("product-options-wrapper");
-    private By availableSize = By.xpath("//div[contains(@class,'active')]/div[not(contains(@class,'outofstock'))]");
+    private By productOptionsWrapper = By.className("product-info-main");
+    private By availableSize = By.xpath("//div[contains(@class,'active')]/div[not(contains(@class,'outofstock'))][contains(@class,'swatch-option')]");
     private By btnAddToCart = By.id("product-addtocart-button");
 
+    public ItemDetailPage(){
+
+    }
     public void waitForItemPageLoaded(){
-//        syscoLabUIOgm.waitTillElementLoaded(productOptionsWrapper, 30);
+        System.out.println("Page Load - Started");
+        syscoLabUIOgm.waitTillElementLoaded(productOptionsWrapper, 15);
+        System.out.println("Page Load - End");
     }
 
     public List<WebElement> getAvailableSizes(){
-//        waitForItemPageLoaded();
+        waitForItemPageLoaded();
+        syscoLabUIOgm.sleep(5);
         return syscoLabUIOgm.findElements(availableSize);
     }
 
-    public void selectAvailableSize(WebElement element){
-        syscoLabUIOgm.click(element);
+    public void selectAvailableSize(){
+        System.out.println("Found Available Sizes: "  + getAvailableSizes().size());
+        Integer selectRandomItemNumber = (int)(Math.random() * (getAvailableSizes().size()-1) + 1);
+        syscoLabUIOgm.click(getAvailableSizes().get(selectRandomItemNumber));
     }
 
     public void clickAddToCart(){
+        syscoLabUIOgm.waitTillElementLoaded(btnAddToCart, 15);
         syscoLabUIOgm.click(btnAddToCart);
     }
 }

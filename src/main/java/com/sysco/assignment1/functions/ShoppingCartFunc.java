@@ -48,6 +48,7 @@ public class ShoppingCartFunc {
             openCart();
             int cartItems = shoppingCartPage.getCartItemCount();
             for(int i=0; i<cartItems; i++){
+
                 shoppingCartPage.clickCloseItem();
                 shoppingCartPage.clickOKModelWindow();
                 System.out.println(String.format("Removed Item (%s) from Cart successfully", i+1));
