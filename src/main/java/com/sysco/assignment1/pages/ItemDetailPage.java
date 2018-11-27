@@ -30,9 +30,11 @@ public class ItemDetailPage extends BasePage {
     }
 
     public void selectAvailableSize(){
-        System.out.println("Found Available Sizes: "  + getAvailableSizes().size());
-        Integer selectRandomItemNumber = (int)(Math.random() * (getAvailableSizes().size()-1) + 1);
-        syscoLabUIOgm.click(getAvailableSizes().get(selectRandomItemNumber));
+        Integer availableSizes = getAvailableSizes().size();
+        System.out.println("Found Available Sizes: "  + availableSizes);
+        Integer selectRandomItemIndex = (int)(Math.random() * availableSizes + 1) - 1;
+        System.out.println("Clicking Index: "  + selectRandomItemIndex);
+        syscoLabUIOgm.click(getAvailableSizes().get(selectRandomItemIndex));
     }
 
     public void clickAddToCart(){

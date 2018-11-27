@@ -28,16 +28,15 @@ public class ItemSearchPage extends BasePage {
     }
 
     public void selectFirstSearchItem(){
-        syscoLabUIOgm.sleep(5);
-        syscoLabUIOgm.moveToAndClick(searchedItem);
+        syscoLabUIOgm.click(searchedItem);
     }
 
     public void selectRandomizedSearchItem(){
-
-        syscoLabUIOgm.sleep(10);
-        System.out.println("Found Items: "  + getSearchedItems().size());
-        Integer selectRandomItemNumber = (int)(Math.random() * getSearchedItems().size() + 1);
-        WebElement element = getSearchedItems().get(selectRandomItemNumber);
-        syscoLabUIOgm.click(element);
+        Integer searchedItems = getSearchedItems().size();
+        System.out.println("Found Items: "  + searchedItems);
+        Integer selectRandomItemIndex = (int)(Math.random() * searchedItems + 1) -1;
+        System.out.println("Selecting Item Index: "  + selectRandomItemIndex);
+        WebElement element = getSearchedItems().get(selectRandomItemIndex);
+        element.click();
     }
 }

@@ -5,6 +5,8 @@ import org.openqa.selenium.Capabilities;
 
 import com.syscolab.qe.core.ui.SyscoLabUI;
 import com.syscolab.qe.core.ui.web.SyscoLabWUI;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 
 import java.util.concurrent.TimeUnit;
 
@@ -64,10 +66,14 @@ public class AUTLandingPage extends BasePage{
     }
 
     public String getLoggedInUserGeetingText(){
-        if(syscoLabUIOgm.isDisplayed(lblGreetUser)){
+        try{
+            syscoLabUIOgm.waitTillElementLoaded(lblGreetUser);
             return syscoLabUIOgm.getText(lblGreetUser);
+        }catch(NoSuchElementException ex){
+            return null;
+        } catch (TimeoutException ex){
+            return null;
         }
-        return null;
     }
 
     public Boolean isCartItemsCountDisplayed() {

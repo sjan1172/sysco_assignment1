@@ -79,9 +79,11 @@ public class UserFunc  {
         menuOptions.gotoCategory(categoryName);
         itemSearchPage.waitForSearchedItemsLoaded();
         itemSearchPage.selectRandomizedSearchItem();
+//        itemDetailPage.pause(5000);
         itemDetailPage.selectAvailableSize(); //Selecting first
+//        itemDetailPage.pause(5000);
         itemDetailPage.clickAddToCart();
-        itemDetailPage.pause(5000);
+//        itemDetailPage.pause(5000);
 
 
     }
