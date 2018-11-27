@@ -4,12 +4,10 @@ import com.syscolab.qe.core.reporting.SyscoLabListener;
 import com.syscolab.qe.core.reporting.SyscoLabQCenter;
 import com.syscolab.qe.core.reporting.SyscoLabReporting;
 import com.sysco.assignment1.common.Constants;
-import org.apache.log4j.Logger;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
+import static com.sysco.assignment1.functions.UserFunc.autLandingPage;
 
 @Listeners(SyscoLabListener.class)
 public class TestBase {
@@ -18,7 +16,6 @@ public class TestBase {
 
     @BeforeClass
     public void init() {
-
         testListeners = new SyscoLabListener();
         syscoLabQCenter = new SyscoLabQCenter();
     }
@@ -26,6 +23,20 @@ public class TestBase {
     @BeforeTest
     public void beforeTest() {
         System.out.println("Test Running " + this.getClass().toString());
+        if (Constants.RUN_LOCALLY) {
+            DriverSetUpUtil.setToRunLocally();
+            DesiredCapabilities capabilities = null;
+
+            autLandingPage.loadPage(capabilities, Constants.APP_URL);
+        } else {
+            autLandingPage.loadPage(DriverSetUpUtil.setToRunRemotely(Constants.APP_OS), Constants.APP_URL);
+        }
+    }
+
+    @AfterTest
+    public void afterTest(){
+        System.out.println("Test Finished " + this.getClass().toString());
+        autLandingPage.quitDriver();
     }
 
     @AfterClass(alwaysRun = true)

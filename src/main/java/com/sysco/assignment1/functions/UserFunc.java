@@ -1,5 +1,7 @@
 package com.sysco.assignment1.functions;
 
+import com.sysco.assignment1.models.CartDetails;
+import com.sysco.assignment1.models.CartItem;
 import com.sysco.assignment1.pages.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -17,22 +19,24 @@ public class UserFunc  {
     public static ItemSearchPage itemSearchPage = new ItemSearchPage();
     public static ItemDetailPage itemDetailPage = new ItemDetailPage();
 
-    public static void loadPage() {
+    public static CartItem userSelectedCartItemDetails = new CartItem();
 
-        if (Constants.RUN_LOCALLY) {
-            DriverSetUpUtil.setToRunLocally();
-            DesiredCapabilities capabilities = null;
-
-            autLandingPage.loadPage(capabilities, Constants.APP_URL);
-        } else {
-            autLandingPage.loadPage(DriverSetUpUtil.setToRunRemotely(Constants.APP_OS), Constants.APP_URL);
-        }
-    }
-
-
-    public static void quiteDriver() {
-        autLandingPage.quitDriver();
-    }
+//    public static void loadPage() {
+//
+//        if (Constants.RUN_LOCALLY) {
+//            DriverSetUpUtil.setToRunLocally();
+//            DesiredCapabilities capabilities = null;
+//
+//            autLandingPage.loadPage(capabilities, Constants.APP_URL);
+//        } else {
+//            autLandingPage.loadPage(DriverSetUpUtil.setToRunRemotely(Constants.APP_OS), Constants.APP_URL);
+//        }
+//    }
+//
+//
+//    public static void quiteDriver() {
+//        autLandingPage.quitDriver();
+//    }
 
     public static void navigateToLoginPage(){
         autLandingPage.clickLoginMenu();
@@ -78,14 +82,9 @@ public class UserFunc  {
         menuOptions.gotoMensMenu();
         menuOptions.gotoCategory(categoryName);
         itemSearchPage.waitForSearchedItemsLoaded();
-        itemSearchPage.selectRandomizedSearchItem();
-//        itemDetailPage.pause(5000);
+        userSelectedCartItemDetails = itemSearchPage.selectRandomizedSearchItem();
         itemDetailPage.selectAvailableSize(); //Selecting first
-//        itemDetailPage.pause(5000);
         itemDetailPage.clickAddToCart();
-//        itemDetailPage.pause(5000);
-
-
     }
 
     public static void refreshPage() {

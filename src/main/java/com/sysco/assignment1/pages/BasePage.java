@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
  * Created by Shiyam on 11/19/18.
  */
 public class BasePage {
-    protected static SyscoLabUI syscoLabUIOgm;
+    public static SyscoLabUI syscoLabUIOgm;
     private By btnOKModalWindow = By.xpath("//button/span[text()='OK']/..");
 
     public BasePage(){
