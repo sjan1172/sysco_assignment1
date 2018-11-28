@@ -10,8 +10,8 @@
         <repository>
             <id>qe.sysco.repo.core</id>
             <name>qe_core</name>
-            <!--<url>http://10.168.135.194:8081/repository/sqe_repo</url>-->
-            <url>http://qcenter.cake.net:8081/repository/qe.syscolab.repo.core/</url>
+            <url>http://10.168.135.194:8081/repository/sqe_repo</url>
+            <!--<url>http://qcenter.cake.net:8081/repository/qe.syscolab.repo.core/</url>-->
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -21,16 +21,16 @@
         </repository>
     </repositories>
     <dependencies>
-        <!--<dependency>-->
-            <!--<groupId>com.sysco.qe</groupId>-->
-            <!--<artifactId>qe_core</artifactId>-->
-            <!--<version>0.0.2</version>-->
-        <!--</dependency>-->
         <dependency>
-            <groupId>com.syscolab.qe</groupId>
-            <artifactId>qe-core</artifactId>
-            <version>0.2.3</version>
+            <groupId>com.sysco.qe</groupId>
+            <artifactId>qe_core</artifactId>
+            <version>0.0.2</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.syscolab.qe</groupId>-->
+            <!--<artifactId>qe-core</artifactId>-->
+            <!--<version>0.2.3</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
@@ -43,7 +43,7 @@
         </dependency>
     </dependencies>
     <properties>
-        <suite>regression</suite>
+        <suite>suite_assignment</suite>
     </properties>
     <profiles>
         <profile>
@@ -56,7 +56,7 @@
             </properties>
         </profile>
         <profile>
-            <id>regression</id>
+            <id>assignment</id>
             <build>
                 <plugins>
                     <plugin>
@@ -81,7 +81,7 @@
                             <systemProperties>
                                 <property>
                                     <name>update.dashboard</name>
-                                    <value>false</value>
+                                    <value>true</value>
                                 </property>
                             </systemProperties>
                         </configuration>

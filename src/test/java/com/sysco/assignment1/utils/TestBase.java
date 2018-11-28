@@ -20,7 +20,7 @@ public class TestBase {
         syscoLabQCenter = new SyscoLabQCenter();
     }
 
-    @BeforeTest
+    @BeforeMethod
     public void beforeTest() {
         System.out.println("Test Running " + this.getClass().toString());
         if (Constants.RUN_LOCALLY) {
@@ -33,8 +33,8 @@ public class TestBase {
         }
     }
 
-    @AfterTest
-    public void afterTest(){
+    @AfterMethod(alwaysRun = true)
+    public void afterMethod(){
         System.out.println("Test Finished " + this.getClass().toString());
         autLandingPage.quitDriver();
     }

@@ -1,17 +1,9 @@
 package com.sysco.assignment1.functions;
 
-import com.sysco.assignment1.models.CartDetails;
 import com.sysco.assignment1.models.CartItem;
 import com.sysco.assignment1.pages.*;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
-import com.sysco.assignment1.common.Constants;
-import com.sysco.assignment1.utils.DriverSetUpUtil;
-
-/**
- * Created by Rifad on 5/21/18.
- */
-public class UserFunc  {
+public class UserFunc {
 
     public static AUTLandingPage autLandingPage = new AUTLandingPage();
     public static AUTLoginPage autLoginPage = new AUTLoginPage();
@@ -21,40 +13,23 @@ public class UserFunc  {
 
     public static CartItem userSelectedCartItemDetails = new CartItem();
 
-//    public static void loadPage() {
-//
-//        if (Constants.RUN_LOCALLY) {
-//            DriverSetUpUtil.setToRunLocally();
-//            DesiredCapabilities capabilities = null;
-//
-//            autLandingPage.loadPage(capabilities, Constants.APP_URL);
-//        } else {
-//            autLandingPage.loadPage(DriverSetUpUtil.setToRunRemotely(Constants.APP_OS), Constants.APP_URL);
-//        }
-//    }
-//
-//
-//    public static void quiteDriver() {
-//        autLandingPage.quitDriver();
-//    }
-
-    public static void navigateToLoginPage(){
+    public static void navigateToLoginPage() {
         autLandingPage.clickLoginMenu();
     }
 
-    public static void navigateToRegisterPage(){
+    public static void navigateToRegisterPage() {
         autLandingPage.clickRegisterMenu();
     }
 
-    public static void navigateToContactPage(){
+    public static void navigateToContactPage() {
         autLandingPage.clickContactMenu();
     }
 
-    public static void navigateToTrackOrdersPage(){
+    public static void navigateToTrackOrdersPage() {
         autLandingPage.clickTrackOrdersMenu();
     }
 
-    public static void getLogin(String email, String password){
+    public static void getLogin(String email, String password) {
         autLandingPage.clickLoginMenu();
         autLoginPage.enterEmail(email);
         autLoginPage.enterPassword(password);
@@ -68,16 +43,15 @@ public class UserFunc  {
      * Purpose: This verification method return true if given text is equals to currently loggedIn displayed text.
      * Else returns false.
      */
-    public static Boolean verifyWhetherCorrectUserLoggedIn(String expectedText){
-        if(expectedText.equals(autLandingPage.getLoggedInUserGeetingText())){
+    public static Boolean verifyWhetherCorrectUserLoggedIn(String expectedText) {
+        if (expectedText.equals(autLandingPage.getLoggedInUserGeetingText())) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    public static void addRandomItemFromMensCategoryToCart(String categoryName){
+    public static void addRandomItemFromMensCategoryToCart(String categoryName) {
 
         menuOptions.gotoMensMenu();
         menuOptions.gotoCategory(categoryName);

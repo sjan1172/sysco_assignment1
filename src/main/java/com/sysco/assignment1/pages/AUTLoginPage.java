@@ -2,11 +2,6 @@ package com.sysco.assignment1.pages;
 
 import org.openqa.selenium.By;
 
-import com.syscolab.qe.core.ui.SyscoLabUI;
-
-/**
- * Created by Shiyam on 11/19/18.
- */
 public class AUTLoginPage extends BasePage {
     //Elements under "LOGIN TO MYFIT REWARDS" section
     private By txtEmail = By.xpath("//input[@id='email']");
@@ -14,7 +9,7 @@ public class AUTLoginPage extends BasePage {
     private By lnkForgotPassword = By.partialLinkText("Forgot Your Password?");
     private By btnLogin = By.id("send2");
 
-    public AUTLoginPage(){
+    public AUTLoginPage() {
     }
 
     public void enterEmail(String email) {
@@ -25,11 +20,11 @@ public class AUTLoginPage extends BasePage {
         syscoLabUIOgm.sendKeys(txtPassword, password);
     }
 
-    public void clickFogotPassword(){
+    public void clickFogotPassword() {
         syscoLabUIOgm.click(lnkForgotPassword);
     }
 
-    public void clickLogin(){
+    public void clickLogin() {
         syscoLabUIOgm.click(btnLogin);
     }
 }

@@ -4,12 +4,12 @@ public class CartItem {
     private String itemName;
     private String itemPrice;
 
-    public CartItem(String itemName, String itemPrice){
+    public CartItem(String itemName, String itemPrice) {
         this.itemName = itemName;
         this.itemPrice = itemPrice;
     }
 
-    public CartItem(){
+    public CartItem() {
     }
 
     public String getItemName() {

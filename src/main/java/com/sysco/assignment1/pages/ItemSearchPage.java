@@ -6,9 +6,6 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-/**
- * Created by Shiyam Jannan on 11/19/18.
- */
 public class ItemSearchPage extends BasePage {
 
     private By searchedItemsContainer = By.xpath("//ul[contains(@class,'product-items')]");
@@ -17,33 +14,34 @@ public class ItemSearchPage extends BasePage {
     private By itemName = By.cssSelector("a.product-item-link");
     private By itemPrice = By.xpath("//span[contains(@id,'product-price')]");
 
-    public ItemSearchPage(){
+    public ItemSearchPage() {
 
     }
-    public void waitForSearchedItemsLoaded(){
+
+    public void waitForSearchedItemsLoaded() {
         syscoLabUIOgm.waitTillElementLoaded(searchedItemsContainer);
     }
 
-    public List<WebElement> getSearchedItems(){
+    public List<WebElement> getSearchedItems() {
         return syscoLabUIOgm.findElements(searchedItem);
     }
 
-    public void selectFirstSearchItem(){
+    public void selectFirstSearchItem() {
         syscoLabUIOgm.click(searchedItem);
     }
 
-    public CartItem selectRandomizedSearchItem(){
+    public CartItem selectRandomizedSearchItem() {
         Integer searchedItems = getSearchedItems().size();
-        System.out.println("Found Items: "  + searchedItems);
-        Integer selectRandomItemIndex = (int)(Math.random() * searchedItems + 1) -1;
-        System.out.println("Selecting Item Index: "  + selectRandomItemIndex);
+        System.out.println("Found Items: " + searchedItems);
+        Integer selectRandomItemIndex = (int) (Math.random() * searchedItems + 1) - 1;
+        System.out.println("Selecting Item Index: " + selectRandomItemIndex);
         WebElement element = getSearchedItems().get(selectRandomItemIndex);
         CartItem cartItem = getSelectedItemDetails(selectRandomItemIndex);
         element.click();
         return cartItem;
     }
 
-    public CartItem getSelectedItemDetails(int selectRandomItemIndex){
+    public CartItem getSelectedItemDetails(int selectRandomItemIndex) {
         //Getting Item Name
         WebElement selectedItemNameElement = syscoLabUIOgm.findElements(itemName).get(selectRandomItemIndex);
         String itemName = syscoLabUIOgm.getText(selectedItemNameElement);
